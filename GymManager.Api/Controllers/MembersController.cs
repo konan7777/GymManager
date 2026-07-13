@@ -233,6 +233,15 @@ public class MembersController : BaseApiController
     [HttpPost]
     public async Task<IActionResult> CreateMember(CreateMemberRequest request)
     {
+        if (string.IsNullOrWhiteSpace(request.FirstName))
+            return BadRequest("First name is required.");
+
+        if (string.IsNullOrWhiteSpace(request.LastName))
+            return BadRequest("Last name is required.");
+
+        if (request.MemberType < 0)
+            return BadRequest("Member type is required.");
+
         var member = new Member
         {
             GymId = GymId,
@@ -267,6 +276,15 @@ public class MembersController : BaseApiController
         long id,
         UpdateMemberRequest request)
     {
+        if (string.IsNullOrWhiteSpace(request.FirstName))
+            return BadRequest("First name is required.");
+
+        if (string.IsNullOrWhiteSpace(request.LastName))
+            return BadRequest("Last name is required.");
+
+        if (request.MemberType < 0)
+            return BadRequest("Member type is required.");
+
         var member = await _context.Members
             .FirstOrDefaultAsync(x =>
                 x.Id == id &&
