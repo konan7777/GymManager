@@ -1,10 +1,32 @@
+
+# .NET build output
 bin/
 obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+publish/
 
+# Visual Studio
 .vs/
-.vscode/
-
-appsettings.Development.json
-
 *.user
 *.suo
+*.cache
+
+# VS Code local settings
+.vscode/
+
+# Application configuration and secrets
+appsettings.Development.json
+appsettings.Production.json
+.env
+.env.*
+!.env.example
+
+# Logs and test results
+*.log
+TestResults/
+
+# Operating system files
+.DS_Store
+Thumbs.db
